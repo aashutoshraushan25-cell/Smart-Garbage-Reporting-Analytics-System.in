@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Garbage Reporting & Analytics System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <nav class="topbar">
+        <div class="brand">
+          <div class="brand-mark"><i class="fa-solid fa-city"></i></div>
+          <div>
+            <p class="eyebrow">Municipal e-Governance Platform</p>
+            <h1>Smart Garbage Reporting & Analytics System</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <div class="language-switcher">
+            <label for="languageSelect">Indian Language</label>
+            <select id="languageSelect" aria-label="Select Indian Language">
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="bn">Bengali</option>
+              <option value="te">Telugu</option>
+              <option value="mr">Marathi</option>
+              <option value="ta">Tamil</option>
+              <option value="ur">Urdu</option>
+              <option value="gu">Gujarati</option>
+              <option value="kn">Kannada</option>
+              <option value="ml">Malayalam</option>
+              <option value="or">Odia</option>
+              <option value="pa">Punjabi</option>
+              <option value="as">Assamese</option>
+              <option value="mai">Maithili</option>
+              <option value="sa">Sanskrit</option>
+              <option value="ks">Kashmiri</option>
+              <option value="ne">Nepali</option>
+              <option value="gom">Konkani</option>
+              <option value="sd">Sindhi</option>
+              <option value="doi">Dogri</option>
+              <option value="mni">Manipuri</option>
+              <option value="brx">Bodo</option>
+              <option value="sat">Santali</option>
+            </select>
+          </div>
+
+          <div class="tab-switcher" role="tablist" aria-label="Portal Navigation">
+            <button class="tab-button active" data-tab="citizen" role="tab" aria-selected="true">
+              <i class="fa-solid fa-user-group"></i>
+              Citizen Portal
+            </button>
+            <button class="tab-button" data-tab="admin" role="tab" aria-selected="false">
+              <i class="fa-solid fa-chart-line"></i>
+              Admin Panel
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <section class="hero-content">
+        <div class="hero-copy">
+          <span class="hero-badge"><i class="fa-solid fa-shield-heart"></i> Clean city operations</span>
+          <h2>Fast complaint reporting, transparent tracking, and actionable municipal insights.</h2>
+          <p>Citizens can report sanitation issues with image evidence, while administrators monitor complaints, update progress, and review live analytics from one unified dashboard.</p>
+          <div class="hero-metrics">
+            <article class="metric-card">
+              <i class="fa-solid fa-clipboard-list"></i>
+              <div>
+                <strong id="heroTotalComplaints">0</strong>
+                <span>Total Complaints</span>
+              </div>
+            </article>
+            <article class="metric-card">
+              <i class="fa-solid fa-hourglass-half"></i>
+              <div>
+                <strong id="heroPendingComplaints">0</strong>
+                <span>Pending Cases</span>
+              </div>
+            </article>
+            <article class="metric-card">
+              <i class="fa-solid fa-circle-check"></i>
+              <div>
+                <strong id="heroCompletedComplaints">0</strong>
+                <span>Completed Cases</span>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="panel-header">
+            <span><i class="fa-solid fa-satellite-dish"></i> Service Snapshot</span>
+            <strong>Live Monitoring</strong>
+          </div>
+          <div class="service-list">
+            <div class="service-item">
+              <span>Garbage collection response</span>
+              <strong>Priority Enabled</strong>
+            </div>
+            <div class="service-item">
+              <span>Ward complaint tracking</span>
+              <strong>Real-time Status</strong>
+            </div>
+            <div class="service-item">
+              <span>Visual evidence archive</span>
+              <strong>Secure Browser Storage</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="india-gallery">
+        <article class="photo-feature photo-large" style="background-image: linear-gradient(180deg, rgba(11, 34, 61, 0.12), rgba(11, 34, 61, 0.72)), url('https://unsplash.com/photos/Z2SFnEVfqUE/download?force=true&w=1200');">
+          <div class="photo-overlay">
+            <span class="photo-tag">Urban India</span>
+            <h3>Modern city monitoring for cleaner public spaces</h3>
+            <p>Digitally connect citizens and municipal teams with faster reporting and visible action.</p>
+          </div>
+        </article>
+        <article class="photo-feature" style="background-image: linear-gradient(180deg, rgba(17, 74, 140, 0.1), rgba(17, 74, 140, 0.74)), url('https://unsplash.com/photos/dheLH2GGpfw/download?force=true&w=900');">
+          <div class="photo-overlay">
+            <span class="photo-tag">Community View</span>
+            <h3>Local neighborhoods matter</h3>
+          </div>
+        </article>
+        <article class="photo-feature" style="background-image: linear-gradient(180deg, rgba(234, 123, 34, 0.08), rgba(18, 54, 96, 0.78)), url('https://unsplash.com/photos/2uao23oNB_o/download?force=true&w=900');">
+          <div class="photo-overlay">
+            <span class="photo-tag">Smart Governance</span>
+            <h3>Data-backed city services</h3>
+          </div>
+        </article>
+      </section>
+    </header>
+
+    <main>
+      <section id="citizen" class="tab-panel active" role="tabpanel">
+        <section class="glass-card civic-banner">
+          <div class="civic-banner-copy">
+            <p class="eyebrow">Public Service Mission</p>
+            <h3>Cleaner wards, safer roads, and better civic response across Indian neighborhoods</h3>
+            <p>Use the portal to report issues early, attach evidence, and help municipal teams resolve complaints with better visibility.</p>
+          </div>
+          <div class="civic-banner-photo" style="background-image: linear-gradient(180deg, rgba(15, 44, 79, 0.16), rgba(15, 44, 79, 0.36)), url('https://unsplash.com/photos/nfkL2SuCfWM/download?force=true&w=1200');"></div>
+        </section>
+
+        <section class="glass-card social-display-card">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" id="socialCitizenEyebrow">Official Social Media</p>
+              <h3 id="socialCitizenHeading">Follow municipal updates and announcements</h3>
+            </div>
+            <i class="fa-solid fa-hashtag"></i>
+          </div>
+          <div id="socialLinksList" class="social-links-list"></div>
+        </section>
+
+        <div class="section-grid">
+          <article class="glass-card form-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Citizen Complaint Submission</p>
+                <h3>Report a sanitation or civic issue</h3>
+              </div>
+              <i class="fa-solid fa-file-signature"></i>
+            </div>
+
+            <form id="complaintForm" class="complaint-form">
+              <div class="form-row">
+                <label>
+                  Full Name
+                  <input type="text" id="fullName" placeholder="Enter citizen full name" required>
+                </label>
+                <label>
+                  Phone Number
+                  <input type="tel" id="phoneNumber" placeholder="Enter contact number" required>
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  Location / Ward Number
+                  <input type="text" id="location" placeholder="Example: Ward 12, Main Road" required>
+                </label>
+                <label>
+                  Complaint Category
+                  <select id="category" required>
+                    <option value="">Select category</option>
+                    <option>Garbage Pile</option>
+                    <option>Drainage Leakage</option>
+                    <option>Dead Animal</option>
+                    <option>Road Damage</option>
+                    <option>Street Sweeping Required</option>
+                    <option>Public Dustbin Overflow</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="live-location-card">
+                <div class="live-location-copy">
+                  <strong id="liveLocationTitle">Share Live Location</strong>
+                  <p id="liveLocationDescription">Citizen can send current GPS location directly to admin for faster complaint response.</p>
+                </div>
+                <div class="live-location-actions">
+                  <button type="button" id="getLocationButton" class="secondary-button">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <span id="getLocationButtonText">Get Live Location</span>
+                  </button>
+                  <div id="liveLocationStatus" class="live-location-status">Live location not added yet.</div>
+                </div>
+              </div>
+
+              <label>
+                Complaint Description
+                <textarea id="description" rows="4" placeholder="Briefly describe the issue for the municipal team." required></textarea>
+              </label>
+
+              <div class="donation-card">
+                <div class="donation-copy">
+                  <strong id="donationTitle">Support Cleanliness Fund</strong>
+                  <p id="donationDescription">Citizen can optionally contribute a support donation for sanitation drives and emergency response efforts.</p>
+                </div>
+                <div class="donation-grid">
+                  <label>
+                    <span id="donationAmountLabel">Donation Amount</span>
+                    <input type="number" id="donationAmount" min="0" step="1" placeholder="Enter amount in INR">
+                  </label>
+                  <label>
+                    <span id="donationMethodLabel">Donation Method</span>
+                    <select id="donationMethod">
+                      <option value="" id="donationMethodPlaceholder">Select method</option>
+                      <option value="UPI">UPI</option>
+                      <option value="Card">Card</option>
+                      <option value="Net Banking">Net Banking</option>
+                      <option value="Cash Pledge">Cash Pledge</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-row file-row">
+                <label class="file-upload">
+                  <span>Upload Image Evidence</span>
+                  <input type="file" id="imageUpload" accept="image/*">
+                  <small>Supported: JPG, PNG, WEBP</small>
+                </label>
+                <div class="image-preview" id="imagePreview">
+                  <i class="fa-regular fa-image"></i>
+                  <span>No image selected</span>
+                </div>
+              </div>
+
+              <button type="submit" class="primary-button">
+                <i class="fa-solid fa-paper-plane"></i>
+                Submit Complaint
+              </button>
+            </form>
+          </article>
+        </div>
+
+        <section class="donation-layout">
+          <article class="glass-card donation-module-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Citizen Donation Module</p>
+                <h3>Support city cleanliness and rapid response</h3>
+              </div>
+              <i class="fa-solid fa-hand-holding-dollar"></i>
+            </div>
+
+            <div class="donation-hero-strip">
+              <div>
+                <strong>Municipal Cleanliness Support Fund</strong>
+                <p>Citizens can voluntarily contribute to ward cleanup drives, emergency sanitation response, and public waste infrastructure upgrades.</p>
+              </div>
+              <span class="donation-badge">Secure UPI, QR & Razorpay Ready</span>
+            </div>
+
+            <form id="donationForm" class="complaint-form donation-form">
+              <div class="form-row">
+                <label>
+                  Donor Name
+                  <input type="text" id="donorName" placeholder="Enter donor full name" required>
+                </label>
+                <label>
+                  Phone Number
+                  <input type="tel" id="donorPhone" placeholder="Enter donor phone number" required>
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  Donation Amount (INR)
+                  <input type="number" id="standaloneDonationAmount" min="1" step="1" placeholder="Enter custom donation amount" required>
+                </label>
+                <label>
+                  Payment Method
+                  <select id="standaloneDonationMethod" required>
+                    <option value="">Select payment method</option>
+                    <option value="UPI">UPI</option>
+                    <option value="QR Code">QR Code</option>
+                    <option value="Razorpay">Razorpay</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                Purpose / Note
+                <textarea id="donationPurpose" rows="3" placeholder="Optional note for how the donation should support cleanliness work."></textarea>
+              </label>
+
+              <div class="donation-actions-grid">
+                <button type="button" id="generateUpiButton" class="secondary-button">
+                  <i class="fa-solid fa-mobile-screen-button"></i>
+                  Generate UPI Link
+                </button>
+                <button type="button" id="generateQrButton" class="secondary-button">
+                  <i class="fa-solid fa-qrcode"></i>
+                  Show QR Code
+                </button>
+                <button type="button" id="payRazorpayButton" class="primary-button">
+                  <i class="fa-solid fa-credit-card"></i>
+                  Pay with Razorpay
+                </button>
+                <button type="submit" class="secondary-button">
+                  <i class="fa-solid fa-bookmark"></i>
+                  Save Donation Record
+                </button>
+              </div>
+            </form>
+
+            <div class="donation-payment-grid">
+              <div class="payment-panel">
+                <div class="payment-panel-head">
+                  <h4>UPI Link</h4>
+                  <span>Tap-to-pay support</span>
+                </div>
+                <a id="upiLinkDisplay" class="upi-link disabled-link" href="#" target="_blank" rel="noopener noreferrer">Generate a UPI payment link</a>
+              </div>
+
+              <div class="payment-panel">
+                <div class="payment-panel-head">
+                  <h4>QR Code</h4>
+                  <span>Scan and pay</span>
+                </div>
+                <div id="qrCodeContainer" class="qr-code-box">
+                  <i class="fa-solid fa-qrcode"></i>
+                  <span>QR code will appear here</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass-card donation-history-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Donation History</p>
+                <h3>Recent citizen contributions</h3>
+              </div>
+              <i class="fa-solid fa-receipt"></i>
+            </div>
+            <div id="donationHistoryList" class="donation-history-list"></div>
+          </article>
+        </section>
+      </section>
+
+      <section id="admin" class="tab-panel" role="tabpanel">
+        <div id="adminLoginView" class="admin-access-wrap">
+          <article class="glass-card admin-login-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Restricted Access</p>
+                <h3>Admin authentication required</h3>
+              </div>
+              <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <p class="admin-copy">Only authorized municipal administrators can open the dashboard. Please sign in with admin credentials to continue.</p>
+            <div class="admin-auth-tabs">
+              <button type="button" class="admin-auth-tab active" data-auth-view="login" id="loginTabButton">Login</button>
+              <button type="button" class="admin-auth-tab" data-auth-view="signup" id="signupTabButton">Sign Up</button>
+              <button type="button" class="admin-auth-tab" data-auth-view="forgot" id="forgotTabButton">Forgot Password</button>
+            </div>
+
+            <form id="adminLoginForm" class="complaint-form">
+              <div class="form-row">
+                <label>
+                  Admin Username
+                  <input type="text" id="adminUsername" placeholder="Enter admin username" required>
+                </label>
+                <label>
+                  Admin Password
+                  <input type="password" id="adminPassword" placeholder="Enter admin password" required>
+                </label>
+              </div>
+              <div class="admin-credentials-note">
+                Demo access: <strong>admin</strong> / <strong>admin123</strong>
+              </div>
+              <button type="submit" class="primary-button">
+                <i class="fa-solid fa-lock-open"></i>
+                Login to Admin Panel
+              </button>
+            </form>
+
+            <form id="adminSignupForm" class="complaint-form admin-hidden">
+              <div class="form-row">
+                <label>
+                  <span id="signupUsernameLabel">Admin Username</span>
+                  <input type="text" id="signupUsername" placeholder="Create admin username" required>
+                </label>
+                <label>
+                  <span id="signupMobileLabel">Mobile Number</span>
+                  <input type="tel" id="signupMobile" placeholder="Enter mobile number" required>
+                </label>
+              </div>
+              <div class="form-row">
+                <label>
+                  <span id="signupPasswordLabel">Password</span>
+                  <input type="password" id="signupPassword" placeholder="Create password" required>
+                </label>
+                <label>
+                  <span id="signupConfirmPasswordLabel">Confirm Password</span>
+                  <input type="password" id="signupConfirmPassword" placeholder="Confirm password" required>
+                </label>
+              </div>
+              <button type="submit" class="primary-button">
+                <i class="fa-solid fa-user-plus"></i>
+                <span id="signupButtonText">Create Admin Account</span>
+              </button>
+            </form>
+
+            <form id="adminForgotForm" class="complaint-form admin-hidden">
+              <div class="form-row">
+                <label>
+                  <span id="forgotUsernameLabel">Admin Username</span>
+                  <input type="text" id="forgotUsername" placeholder="Enter admin username" required>
+                </label>
+                <label>
+                  <span id="forgotMobileLabel">Registered Mobile Number</span>
+                  <input type="tel" id="forgotMobile" placeholder="Enter registered mobile" required>
+                </label>
+              </div>
+              <div class="form-row">
+                <label>
+                  <span id="forgotNewPasswordLabel">New Password</span>
+                  <input type="password" id="forgotNewPassword" placeholder="Enter new password" required>
+                </label>
+                <label>
+                  <span id="forgotConfirmPasswordLabel">Confirm New Password</span>
+                  <input type="password" id="forgotConfirmPassword" placeholder="Confirm new password" required>
+                </label>
+              </div>
+              <button type="submit" class="secondary-button">
+                <i class="fa-solid fa-key"></i>
+                <span id="forgotButtonText">Reset Password</span>
+              </button>
+            </form>
+          </article>
+        </div>
+
+        <div id="adminDashboardView" class="dashboard-grid admin-hidden">
+          <div class="admin-toolbar">
+            <div>
+              <p class="eyebrow">Authorized Session</p>
+              <h3>Municipal Complaint Control Center</h3>
+            </div>
+            <button id="adminLogoutButton" class="secondary-button" type="button">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Logout
+            </button>
+          </div>
+
+          <section class="stats-grid">
+            <article class="stat-card">
+              <div class="stat-icon blue"><i class="fa-solid fa-inbox"></i></div>
+              <div>
+                <span>Total Complaints</span>
+                <strong id="totalComplaints">0</strong>
+              </div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-icon amber"><i class="fa-solid fa-spinner"></i></div>
+              <div>
+                <span>Pending Complaints</span>
+                <strong id="pendingComplaints">0</strong>
+              </div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-icon orange"><i class="fa-solid fa-circle-exclamation"></i></div>
+              <div>
+                <span>Confirmed Complaints</span>
+                <strong id="confirmedComplaints">0</strong>
+              </div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+              <div>
+                <span>Completed Complaints</span>
+                <strong id="completedComplaints">0</strong>
+              </div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-icon orange"><i class="fa-solid fa-hand-holding-heart"></i></div>
+              <div>
+                <span id="totalDonationsLabel">Total Donations</span>
+                <strong id="totalDonations">INR 0</strong>
+              </div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-icon blue"><i class="fa-solid fa-sack-dollar"></i></div>
+              <div>
+                <span id="fundUsageLabel">Fund Used</span>
+                <strong id="fundUsed">INR 0</strong>
+              </div>
+            </article>
+          </section>
+
+          <section class="glass-card chart-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Analytics Dashboard</p>
+                <h3>Complaint status distribution</h3>
+              </div>
+              <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="complaintChart"></canvas>
+            </div>
+          </section>
+
+          <section class="admin-donation-grid">
+            <article class="glass-card chart-card">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Donation Analytics</p>
+                  <h3>Payment method breakdown</h3>
+                </div>
+                <i class="fa-solid fa-chart-column"></i>
+              </div>
+              <div class="chart-wrap small-chart">
+                <canvas id="donationChart"></canvas>
+              </div>
+            </article>
+
+            <article class="glass-card fund-usage-card">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Fund Usage Tracking</p>
+                  <h3>Track how collected funds are allocated</h3>
+                </div>
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+
+              <form id="fundUsageForm" class="complaint-form">
+                <div class="form-row">
+                  <label>
+                    Usage Category
+                    <input type="text" id="usageCategory" placeholder="Example: Ward cleanup drive" required>
+                  </label>
+                  <label>
+                    Amount Used (INR)
+                    <input type="number" id="usageAmount" min="1" step="1" placeholder="Enter amount used" required>
+                  </label>
+                </div>
+                <button type="submit" class="secondary-button">
+                  <i class="fa-solid fa-plus"></i>
+                  Add Fund Usage
+                </button>
+              </form>
+
+              <div id="fundUsageList" class="fund-usage-list"></div>
+            </article>
+          </section>
+
+          <section class="glass-card social-admin-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow" id="socialAdminEyebrow">Social Media Manager</p>
+                <h3 id="socialAdminHeading">Add official social media links for citizens</h3>
+              </div>
+              <i class="fa-solid fa-share-nodes"></i>
+            </div>
+
+            <form id="socialLinksForm" class="complaint-form">
+              <div class="form-row">
+                <label>
+                  <span id="youtubeLabel">YouTube Link</span>
+                  <input type="url" id="youtubeLink" placeholder="https://youtube.com/..." />
+                </label>
+                <label>
+                  <span id="facebookLabel">Facebook Link</span>
+                  <input type="url" id="facebookLink" placeholder="https://facebook.com/..." />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>
+                  <span id="instagramLabel">Instagram Link</span>
+                  <input type="url" id="instagramLink" placeholder="https://instagram.com/..." />
+                </label>
+                <label>
+                  <span id="twitterLabel">Twitter / X Link</span>
+                  <input type="url" id="twitterLink" placeholder="https://x.com/..." />
+                </label>
+              </div>
+              <button type="submit" class="secondary-button">
+                <i class="fa-solid fa-floppy-disk"></i>
+                <span id="saveSocialLinksText">Save Social Links</span>
+              </button>
+            </form>
+          </section>
+
+          <section class="glass-card table-card">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Complaint Management</p>
+                <h3>Review and update complaint status</h3>
+              </div>
+              <i class="fa-solid fa-table-list"></i>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Citizen</th>
+                    <th>Contact</th>
+                    <th>Location</th>
+                    <th>Live Location</th>
+                    <th>Category</th>
+                    <th>Donation</th>
+                    <th>Status</th>
+                    <th>Evidence</th>
+                    <th>Update</th>
+                  </tr>
+                </thead>
+                <tbody id="complaintsTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="developer-footer">
+      <section class="glass-card developer-card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Developer Details</p>
+            <h3>Created and maintained by Aashutosh Raushan</h3>
+          </div>
+          <i class="fa-solid fa-code"></i>
+        </div>
+
+        <div class="developer-grid">
+          <div class="developer-primary">
+            <strong>Aashutosh Raushan</strong>
+            <p>Frontend and system developer for the Smart Garbage Reporting & Analytics System.</p>
+            <div class="developer-contact-list">
+              <a href="mailto:aashutoshraushan25@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                aashutoshraushan25@gmail.com
+              </a>
+              <a href="tel:7462965515">
+                <i class="fa-solid fa-phone"></i>
+                7462965515
+              </a>
+            </div>
+          </div>
+
+          <div class="developer-socials">
+            <a class="developer-social-link linkedin" href="https://www.linkedin.com/in/aashutosh-raushan-a9937a382/" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-linkedin-in"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a class="developer-social-link instagram" href="https://www.instagram.com/its_aashutosh_raushan__27?igsh=cDJ4dXltYnl3YWk3" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+            <a class="developer-social-link facebook" href="https://www.facebook.com/share/1HYnwKdn7D/" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-facebook-f"></i>
+              <span>Facebook</span>
+            </a>
+            <a class="developer-social-link github" href="https://github.com/aashutoshraushan25-cell" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-github"></i>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </footer>
+  </div>
+
+  <div id="notificationContainer" class="notification-container" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
